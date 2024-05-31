@@ -28,7 +28,8 @@ document.getElementById('fileInput').addEventListener('change', function() {
             const processedContent = processCSV(content);
             document.getElementById('output').innerText = processedContent;
             document.getElementById('downloadButton').style.display = 'block';
-            document.getElementById('downloadButton').setAttribute('onclick', 'downloadCSV("processed_data.csv", "' + encodeURIComponent(processedContent) + '")');
+            const correctedFileName = file.name.replace('.csv', '_corrected.csv');
+            document.getElementById('downloadButton').setAttribute('onclick', 'downloadCSV("' + correctedFileName + '", "' + encodeURIComponent(processedContent) + '")');
         };
         reader.readAsText(file);
     }
